@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use App\Console\Commands\CreateUserCommand;
+use App\Console\Commands\CreateOptionCommand;
+use App\Console\Commands\CreateQuestionCommand;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
@@ -15,6 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         CreateUserCommand::class,
+        CreateQuestionCommand::class,
+        CreateOptionCommand::class
     ];
 
     /**

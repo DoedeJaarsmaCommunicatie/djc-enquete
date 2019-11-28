@@ -12,7 +12,7 @@ class CreateUserCommand extends Command
 
     protected $description = 'Create a new user record';
 
-    public function handle()
+    public function handle(): void
     {
         try {
             $uuid = Uuid::uuid4()->toString();
