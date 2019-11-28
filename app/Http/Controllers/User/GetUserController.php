@@ -23,7 +23,7 @@ class GetUserController extends Controller
             abort(404, $notFoundException->getMessage());
         }
 
-        return response()->json($user->toArray());
+        return response()->json((array) $user);
     }
 
     /**
@@ -33,7 +33,10 @@ class GetUserController extends Controller
      */
     private static function getUser($id)
     {
-        $db = DB::table('users')->where('id', '=', $id);
+        $db = DB::table('users')
+                ->where('id', '=', $id)
+                ->orWhere('uuid', '=', $id)
+                ->orWhere('email', '=', $id);
 
         if ($db->exists()) {
             return $db->first();
