@@ -1,0 +1,22 @@
+name: djc-enquete
+recipe: laravel
+config:
+  webroot: public
+  php: '7.3'
+
+services:
+  pma:
+    type: phpmyadmin
+    portforward: true
+
+  hog:
+    type: mailhog
+    portforward: true
+    hogfrom:
+      - appserver
+
+proxy:
+  pma:
+    - pma-djc-enquete.lndo.site
+  hog:
+    - hog-djc-enquete.lndo.site
