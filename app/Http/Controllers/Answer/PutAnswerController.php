@@ -42,11 +42,20 @@ class PutAnswerController extends Controller
             abort(404, 'Vraag niet gevonden.');
         }
 
-        DB::table('answers')->updateOrInsert([
-            'user_id'       => $uq->first()->id,
-            'option_id'     => $oq->first()->id,
-            'question_id'   => $qq->first()->id
-        ]);
+        $oa = DB::table('answers')
+                ->where('user_id', '=', $uq->first()->id)
+                ->where('question_id', '=', $qq->first()->id);
+
+        if ($oa->exists()) {
+            $oa->update(['option_id' => $oq->first()->id]);
+        } else {
+            DB::table('answers')->updateOrInsert([
+                'user_id'       => $uq->first()->id,
+                'option_id'     => $oq->first()->id,
+                'question_id'   => $qq->first()->id
+            ]);
+        }
+
     }
 
     protected static function answerKey(): string
