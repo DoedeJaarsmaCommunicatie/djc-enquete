@@ -1,6 +1,9 @@
 <?php
 
-require_once __DIR__.'/../vendor/autoload.php';
+use Barryvdh\Cors\HandleCors;
+use Barryvdh\Cors\ServiceProvider;
+
+require_once __DIR__ . '/../vendor/autoload.php';
 
 (new Laravel\Lumen\Bootstrap\LoadEnvironmentVariables(
     dirname(__DIR__)
@@ -57,9 +60,13 @@ $app->singleton(
 |
 */
 
-// $app->middleware([
-//     App\Http\Middleware\ExampleMiddleware::class
-// ]);
+$app->configure('cors');
+
+$app->register(ServiceProvider::class);
+
+$app->middleware([
+    HandleCors::class
+]);
 
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
