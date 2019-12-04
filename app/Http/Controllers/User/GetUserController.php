@@ -31,7 +31,7 @@ class GetUserController extends Controller
      *
      * @return Model|Builder|object
      */
-    private static function getUser($id)
+    public static function getUser($id)
     {
         $db = DB::table('users')
                 ->where('id', '=', $id)

@@ -56,6 +56,7 @@ class PutAnswerController extends Controller
             ]);
         }
 
+        return response()->json([], 201);
     }
 
     protected static function answerKey(): string

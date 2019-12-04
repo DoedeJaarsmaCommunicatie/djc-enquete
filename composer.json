@@ -7,6 +7,8 @@
     "require": {
         "php": "^7.2",
         "barryvdh/laravel-cors": "^0.11.4",
+        "deployer/deployer": "^6.6",
+        "illuminate/mail": "^6.6",
         "laravel/lumen-framework": "^6.0",
         "moontoast/math": "^1.1",
         "ramsey/uuid": "^3.8"
