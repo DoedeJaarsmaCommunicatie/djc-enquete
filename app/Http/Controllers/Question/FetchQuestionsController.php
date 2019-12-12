@@ -10,7 +10,7 @@ class FetchQuestionsController extends Controller
     public function __invoke ()
     {
         $q = DB::table('questions')
-               ->orderByDesc('position')->get();
+               ->orderBy('position', 'ASC')->get();
 
         if ($q->isEmpty()) {
             abort(404, 'No questions found.');
