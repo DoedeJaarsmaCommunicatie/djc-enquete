@@ -26,6 +26,8 @@ class CreateUserCommand extends Command
             'lastName'  => $this->ask('Achternaam?'),
             'email'     => $this->ask('E-mail?'),
             'address'   => $this->ask('Adres?'),
+            'postalCode'=> $this->ask('Postcode?'),
+            'city'      => $this->ask('Plaats?'),
             'uuid'      => $uuid,
         ];
 
@@ -33,7 +35,7 @@ class CreateUserCommand extends Command
         $this->info("Voornaam: {$data['firstName']}");
         $this->info("Achternaam: {$data['lastName']}");
         $this->info("E-mail: {$data['email']}");
-        $this->info("Adres: {$data['address']}");
+        $this->info("Adres: {$data['address']} {$data['postalCode']}, {$data['city']}");
         $this->info("ID: {$data['uuid']}");
 
         if (!$this->confirm('Zijn bovenstaande gegevens correct?', 1)) {

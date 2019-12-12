@@ -22,6 +22,8 @@ class PatchUserController extends Controller
             'lastName',
             'email',
             'address',
+            'postalCode',
+            'city'
         ]));
 
         return response()->json(
